@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 class Book(models.Model):
     
+    # String choices which equal a value integer to calculate 'mean' rating
     class Rating(models.IntegerChoices):
         WASTEOFTIME = 1
         NOTGREAT = 2

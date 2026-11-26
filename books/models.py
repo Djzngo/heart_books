@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -15,6 +16,7 @@ class Book(models.Model):
     
     title = models.CharField(max_length=50, unique=False)
     author = models.CharField(max_length=50, unique=False)
+    image = CloudinaryField('image', default="placeholder")
     published = models.DateField(blank=True)
     approved = models.BooleanField(default=False)
     added_on = models.DateTimeField(auto_now=True)
@@ -22,6 +24,9 @@ class Book(models.Model):
     
     class Meta:
         ordering = ["-added_on"]
+        
+    def __str__(self):
+        return f"Book: {self.title} | Author: {self.author} | Published: {self.published}"
     
 
 class Comment(models.Model):

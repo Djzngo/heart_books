@@ -19,7 +19,7 @@ from django.urls import path, include
 from books import views as index_views
 
 urlpatterns = [
-    path('books/', index_views.index, name="index"),
+    path('', include("books.urls"), name="books-url"),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
 ]

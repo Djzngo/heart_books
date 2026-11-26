@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import Book
 
 # Create your views here.
 
-def index(request):
-    return HttpResponse("This is a page")
+class BookList(generic.ListView):
+    queryset = Book.objects.all()
+    template_name = "book_list.html"

@@ -6,4 +6,4 @@ from .models import Book
 
 class BookList(generic.ListView):
     queryset = Book.objects.all()
-    template_name = "book_list.html"
+    template_name = "books/index.html"

@@ -6,21 +6,12 @@ from cloudinary.models import CloudinaryField
 
 class Book(models.Model):
     
-    # String choices which equal a value integer to calculate 'mean' rating
-    class Rating(models.IntegerChoices):
-        WASTEOFTIME = 1
-        NOTGREAT = 2
-        OK = 3
-        PRETTYGOOD = 4
-        AWESOME = 5
-    
     title = models.CharField(max_length=50, unique=False)
     author = models.CharField(max_length=50, unique=False)
     image = CloudinaryField('image', default="placeholder")
     published = models.DateField(blank=True)
     approved = models.BooleanField(default=False)
     added_on = models.DateTimeField(auto_now=True)
-    rating = models.IntegerField(choices=Rating, default=1)
     
     class Meta:
         ordering = ["-added_on"]
@@ -41,3 +32,32 @@ class Comment(models.Model):
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
     
+    def __str__(self):
+         return f"{self.book}"
+    
+    
+class Rating(models.Model):
+    
+    
+    # String choices which equal a value integer to calculate 'mean' rating
+        class RATING(models.IntegerChoices):
+            WASTEOFTIME = 1
+            NOTGREAT = 2
+            OK = 3
+            PRETTYGOOD = 4
+            AWESOME = 5
+            
+        rating = models.IntegerField(choices=RATING, default=1)
+        book = models.ForeignKey(
+                Book, on_delete=models.CASCADE, related_name="rated"
+            )
+        user = models.ForeignKey(
+            User, on_delete=models.CASCADE, related_name="rater"
+        )
+        rated_on = models.DateTimeField(auto_now_add=True)
+        
+        class Meta:
+                ordering = ["-rated_on"]
+        
+        def __str__(self):
+             return f"Book: {self.book} | Username: {self.user} | Rating: {self.rating}"

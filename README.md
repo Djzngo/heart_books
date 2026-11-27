@@ -118,5 +118,5 @@ I have designed my website skeletons for the desktop, and mobile view via 'Lucid
 
 | - | Home | Books | About | Profile |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
-| Desktop | [Link](/graphics/wireframe/heart_book_wireframe_desktop.pdf) | [Link](graphics\wireframe\heart_book_wireframe_desktop.pdf) | [Link](graphics\wireframe\heart_book_wireframe_desktop.pdf) | [Link]() |
+| Desktop | [Link](/graphics/wireframe/heart_book_wireframe_desktop.pdf) | [Link](/graphics/wireframe/heart_book_wireframe_desktop.pdf) | [Link](/graphics/wireframe/heart_book_wireframe_desktop.pdf) | [Link]() |
 | Mobile | [Link]() | [Link]() | [Link]() | [Link]() |
